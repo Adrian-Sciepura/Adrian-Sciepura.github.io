@@ -10,7 +10,7 @@ section
     width: 900px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 100px;
+    margin-bottom: 400px;    
 }
 
 .section__title
@@ -112,4 +112,55 @@ header
 {
     font-weight: 300;
     font-size: 22px;
+}
+
+#skills
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.skills__element
+{
+    width: 350px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.skill__dot
+{
+    color: #06D6A0;
+    font-size: 20px;
+}
+
+.skill__language
+{
+    font-size: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.skill__tiles
+{
+    margin-left: auto;
+    justify-self: end;
+    display: inline-block;
+    font-size: 0;
+}
+
+.skill__tile
+{
+    display: inline-block;
+    width: 55px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: #888F8A;
+    border: 1px solid white;
+}
+
+.skill__tile--filled
+{
+    background-color: #06D6A0;
 }
