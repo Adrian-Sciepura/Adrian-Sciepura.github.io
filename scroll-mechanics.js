@@ -36,6 +36,26 @@ class Effect
 
         return (from + (to - from) * this.progress)
     }
+
+    checkIfEnded()
+    {
+        if(this.reverse)
+        {
+            return this.progress == 0
+        }
+
+        return this.progress == 1
+    }
+
+    checkIfCurrentlyRunning()
+    {
+        if(this.reverse)
+        {
+            return this.progress < 1
+        }
+
+        return this.progress > 0
+    }
 }
 
 class Section
