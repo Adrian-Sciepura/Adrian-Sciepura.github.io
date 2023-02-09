@@ -1,69 +1,3 @@
-class Effect
-{
-    constructor(startY, endY, reverse = false)
-    {
-        this.startY = startY
-        this.endY = endY
-        this.previousProgress = -1
-        this.progress = 0
-        this.func = null
-        this.reverse = reverse
-    }
-
-    calculateProgress(scrollY)
-    {
-        this.previousProgress = this.progress
-        if(scrollY >= this.endY)
-        {
-            this.progress = 1
-        }
-        else if(scrollY <= this.startY)
-        {
-            this.progress = 0
-        }
-        else
-        {
-            this.progress = (scrollY - this.startY)/(this.endY - this.startY)
-        }
-    }
-
-    calculateValueBetween(from, to)
-    {
-        if(this.reverse)
-        {
-            return (to + (from - to) * this.progress)
-        }
-
-        return (from + (to - from) * this.progress)
-    }
-}
-
-class Section
-{
-    constructor(parentElement)
-    {
-        this.parentElement = parentElement
-        this.onScrollEffects = []
-    }
-
-    updateScrollEffects(scrollY, forceRefresh) {
-        this.onScrollEffects.forEach((effect) => {
-            effect.calculateProgress(scrollY)
-            if(effect.previousProgress != effect.progress)
-            {
-                effect.func(this.parentElement)
-            }
-
-            if(forceRefresh && effect.progress > 0)
-            {
-                effect.func(this.parentElement)
-            }
-        })
-    }
-}
-
-var sections = []
-
 //LANGUAGES ELEMENT
 const languages = new Section(document.querySelector('.languages'))
 const languagesFadeIn = new Effect(0, 1000)
@@ -148,15 +82,6 @@ welcomeFadeOut.func = function(element)
 {
     element.style.opacity = (this.calculateValueBetween(1, 0))
     element.style.scale = (this.calculateValueBetween(1, 0.8))
-
-    if(this.progress > 0)
-    {
-        element.style.userSelect = 'none'
-    }
-    else
-    {
-        element.style.userSelect = 'auto'
-    }    
 }
 
 welcome.onScrollEffects.push(welcomeFadeOut)
@@ -168,36 +93,13 @@ sections.push(welcome)
 const about = new Section(document.querySelector('.about__content'))
 const aboutTitleFadeIn = new Effect(1700, 2500)
 const aboutContentFadeIn = new Effect(1700, 2800)
-const aboutTitleFadeOut = new Effect(3200, 4000)
+const aboutTitleFadeOut = new Effect(3200, 4000, true)
 const aboutContentFadeOut = new Effect(3200, 4300)
 
-aboutTitleFadeIn.func = function(element)
-{
-    const e = element.children[0]
-    e.style.opacity = this.calculateValueBetween(0, 1)
-}
-
-aboutContentFadeIn.func = function(element)
-{
-    const e = element.children[1]
-    e.style.opacity = this.calculateValueBetween(0, 1)
-    e.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
-    e.style.transform = 'translate(' + this.calculateValueBetween(-500, 0) + 'px, 0)'
-}
-
-aboutTitleFadeOut.func = function(element)
-{
-    const e = element.children[0]
-    e.style.opacity = this.calculateValueBetween(1, 0)
-}
-
-aboutContentFadeOut.func = function(element)
-{
-    const e = element.children[1]
-    e.style.opacity = this.calculateValueBetween(1, 0)
-    e.style.filter = 'blur(' + this.calculateValueBetween(0, 3) + 'px)'
-    e.style.scale = (this.calculateValueBetween(1, 0.8))
-}
+aboutTitleFadeIn.func = sectionTitleFadeIn
+aboutContentFadeIn.func = sectionContentFadeIn
+aboutTitleFadeOut.func = sectionTitleFadeIn
+aboutContentFadeOut.func = sectionContentFadeOut
 
 about.onScrollEffects.push(aboutTitleFadeIn)
 about.onScrollEffects.push(aboutContentFadeIn)
@@ -211,31 +113,34 @@ sections.push(about)
 const skills = new Section(document.querySelector('.skills__content'))
 const skillsTitleFadeIn = new Effect(4500, 5300)
 const skillsContentFadeIn = new Effect(4500, 5500)
-const skillsTitleFadeOut = new Effect(6500, 7400)
+const skillsTitleFadeOut = new Effect(6500, 7400, true)
 const skillsContentFadeOut = new Effect(6500, 7300)
 
-skillsTitleFadeIn.func = function(element)
-{
-    const e = element.children[0]
-    e.style.opacity = this.calculateValueBetween(0, 1)
-}
-
-skillsContentFadeIn.func = function(element)
-{
-    const e = element.children[1]
-    e.style.opacity = this.calculateValueBetween(0, 1)
-    e.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
-    e.style.transform = 'translate(' + this.calculateValueBetween(-500, 0) + 'px, 0)'
-}
-
-skillsTitleFadeOut.func = aboutTitleFadeOut.func
-skillsContentFadeOut.func = aboutContentFadeOut.func
+skillsTitleFadeIn.func = sectionTitleFadeIn
+skillsContentFadeIn.func = sectionContentFadeIn
+skillsTitleFadeOut.func = sectionTitleFadeIn
+skillsContentFadeOut.func = sectionContentFadeOut
 
 skills.onScrollEffects.push(skillsTitleFadeIn)
 skills.onScrollEffects.push(skillsContentFadeIn)
 skills.onScrollEffects.push(skillsTitleFadeOut)
 skills.onScrollEffects.push(skillsContentFadeOut)
 sections.push(skills)
+
+
+
+//PROJECTS ELEMENT
+const projects = new Section(document.querySelector('.projects__content'))
+const projectsTitleFadeIn = new Effect(8000, 8800)
+const projectsContentFadeIn = new Effect(8000, 9000)
+
+projectsTitleFadeIn.func = sectionTitleFadeIn
+projectsContentFadeIn.func = sectionContentFadeIn
+
+projects.onScrollEffects.push(projectsTitleFadeIn)
+projects.onScrollEffects.push(projectsContentFadeIn)
+sections.push(projects)
+
 
 
 window.addEventListener('scroll', () => {
