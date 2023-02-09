@@ -1,0 +1,246 @@
+{
+    "desktop": {
+        "default": [
+            {
+                "params" : [15, 10, 20],
+                "lang": "C++"
+            },
+            {
+                "params" : [80, 80, 25],
+                "lang": "C#"
+            },
+            {
+                "params" : [10, 80, -10],
+                "lang": "Python"
+            },
+            {
+                "params" : [50, 5, -5],
+                "lang": "HTML"
+            },
+            {
+                "params" : [85, 35, -10],
+                "lang": "CSS"
+            },
+            {
+                "params" : [5, 50, 7],
+                "lang": "JS"
+            },
+            {
+                "params" : [50, 85, 2],
+                "lang": "PHP"
+            }
+        ],
+        "firstProject": [
+            {
+                "params" : [10, 8, -8],
+                "lang": "C++"
+            },
+            {
+                "params" : [82, 82, -25],
+                "lang": "C++"
+            },
+            {
+                "params" : [6, 80, 10],
+                "lang": "C++"
+            },
+            {
+                "params" : [52, 3, 5],
+                "lang": "C++"
+            },
+            {
+                "params" : [88, 38, 20],
+                "lang": "SDL"
+            },
+            {
+                "params" : [3, 48, -2],
+                "lang": "SDL"
+            },
+            {
+                "params" : [50, 90, 0],
+                "lang": "SDL"
+            }
+        ],
+        "secondProject": [
+            {
+                "params" : [8, 13, -7],
+                "lang": "MVC"
+            },
+            {
+                "params" : [85, 76, -22],
+                "lang": "TS"
+            },
+            {
+                "params" : [12, 84, -2],
+                "lang": "JQuery"
+            },
+            {
+                "params" : [46, 3, -3],
+                "lang": "HTML"
+            },
+            {
+                "params" : [86, 33, 12],
+                "lang": "CSS"
+            },
+            {
+                "params" : [3, 54, -5],
+                "lang": "JS"
+            },
+            {
+                "params" : [54, 90, -4],
+                "lang": "PHP"
+            }
+        ],
+        "thirdProject": [
+            {
+                "params" : [8, 8, 12],
+                "lang": "MVVM"
+            },
+            {
+                "params" : [83, 78, 0],
+                "lang": "C#"
+            },
+            {
+                "params" : [6, 80, -10],
+                "lang": "API"
+            },
+            {
+                "params" : [47, 5, -3],
+                "lang": "Xamarin"
+            },
+            {
+                "params" : [82, 32, -10],
+                "lang": "DropBox"
+            },
+            {
+                "params" : [5, 45, 7],
+                "lang": "C#"
+            },
+            {
+                "params" : [50, 90, -6],
+                "lang": "Azure"
+            }
+        ]
+    },
+    "mobile": {
+        "default": [
+            {
+                "params" : [5, 5, 20],
+                "lang": "C++"
+            },
+            {
+                "params" : [75, 75, 25],
+                "lang": "C#"
+            },
+            {
+                "params" : [10, 75, -10],
+                "lang": "Python"
+            },
+            {
+                "params" : [50, 3, -5],
+                "lang": "HTML"
+            },
+            {
+                "params" : [70, 20, -10],
+                "lang": "CSS"
+            },
+            {
+                "params" : [30, 18, 7],
+                "lang": "JS"
+            },
+            {
+                "params" : [45, 85, 2],
+                "lang": "PHP"
+            }
+        ],
+        "firstProject": [
+            {
+                "params" : [7, 3, 10],
+                "lang": "C++"
+            },
+            {
+                "params" : [78, 77, 4],
+                "lang": "SDL"
+            },
+            {
+                "params" : [7, 85, 7],
+                "lang": "SDL"
+            },
+            {
+                "params" : [47, 5, -2],
+                "lang": "C++"
+            },
+            {
+                "params" : [74, 13, 3],
+                "lang": "SDL"
+            },
+            {
+                "params" : [28, 15, -2],
+                "lang": "SDL"
+            },
+            {
+                "params" : [45, 88, -8],
+                "lang": "C++"
+            }
+        ],
+        "secondProject": [
+            {
+                "params" : [9, 14, -4],
+                "lang": "MVC"
+            },
+            {
+                "params" : [76, 88, 2],
+                "lang": "TS"
+            },
+            {
+                "params" : [4, 80, -3],
+                "lang": "JQuery"
+            },
+            {
+                "params" : [49, 12, 5],
+                "lang": "HTML"
+            },
+            {
+                "params" : [77, 5, 6],
+                "lang": "CSS"
+            },
+            {
+                "params" : [24, 2, -4],
+                "lang": "JS"
+            },
+            {
+                "params" : [40, 90, 5],
+                "lang": "PHP"
+            }
+        ],
+        "thirdProject": [
+            {
+                "params" : [5, 5, -8],
+                "lang": "Xamarin"
+            },
+            {
+                "params" : [78, 77, 18],
+                "lang": "C#"
+            },
+            {
+                "params" : [5, 85, -10],
+                "lang": "MVVM"
+            },
+            {
+                "params" : [45, 3, 10],
+                "lang": "DropBox"
+            },
+            {
+                "params" : [70, 16, -6],
+                "lang": "API"
+            },
+            {
+                "params" : [30, 15, 0],
+                "lang": "C#"
+            },
+            {
+                "params" : [45, 88, 2],
+                "lang": "Azure"
+            }
+        ]
+    }
+}
