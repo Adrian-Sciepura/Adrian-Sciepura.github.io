@@ -3,26 +3,10 @@ const languages = new Section(document.querySelector('.languages'))
 const languagesFadeIn = new Effect(0, 1000)
 const languagesExpand = new Effect(4800, 5700)
 const languagesCollapse = new Effect(6600, 7700, true)
-
-const languagePos = [
-    [15, 10, 20],
-    [80, 80, 25],
-    [10, 80, -10],
-    [50, 5, -5],
-    [85, 35, -10],
-    [5, 50, 7],
-    [50, 80, 2],
-]
-
-const languageMobilePos = [
-    [5, 5, 20],
-    [75, 75, 25],
-    [10, 75, -10],
-    [50, 3, -5],
-    [70, 20, -10],
-    [30, 20, 7],
-    [45, 85, 2],
-]
+const languagesFirstProject = new Effect(8000, 8800)
+const languagesSecondProject = new Effect(9500, 10300)
+const languagesThirdProject = new Effect(11300, 12100)
+const languagesBackToDefault = new Effect(12800, 13600)
 
 languagesFadeIn.func = function(element)
 {
@@ -33,12 +17,11 @@ languagesFadeIn.func = function(element)
     {
         const width = window.innerWidth
         var arr = null
-        if(width > 1400) { arr = languagePos }
-        else { arr = languageMobilePos }
-
-        language.style.transform = 'rotate(' + this.calculateValueBetween(0, arr[i][2]) + 'deg)'
-        language.style.left = this.calculateValueBetween(50, arr[i][0]) + '%'
-        language.style.top = this.calculateValueBetween(50, arr[i][1]) + '%'
+        if(width > 1400) { arr = langData.desktop }
+        else { arr = langData.mobile }
+        language.style.transform = 'rotate(' + this.calculateValueBetween(0, arr.default[i].params[2]) + 'deg)'
+        language.style.left = this.calculateValueBetween(50, arr.default[i].params[0]) + '%'
+        language.style.top = this.calculateValueBetween(50, arr.default[i].params[1]) + '%'
         language.style.opacity = op
         language.style.scale = sc
         i += 1
@@ -59,17 +42,24 @@ languagesExpand.func = function(element)
         language.style.opacity = op
         language.style.scale = sc
         skill.style.transform = 'scaleX(' + bg + ')'
-
         skill.style.opacity = bg
         i += 1
     }
 }
 
 languagesCollapse.func = languagesExpand.func
+languagesFirstProject.func = changeLanguages("default", "firstProject")
+languagesSecondProject.func = changeLanguages("firstProject", "secondProject")
+languagesThirdProject.func = changeLanguages("secondProject", "thirdProject")
+languagesBackToDefault.func = changeLanguages("thirdProject", "default")
 
 languages.onScrollEffects.push(languagesFadeIn)
 languages.onScrollEffects.push(languagesExpand)
 languages.onScrollEffects.push(languagesCollapse)
+languages.onScrollEffects.push(languagesFirstProject)
+languages.onScrollEffects.push(languagesSecondProject)
+languages.onScrollEffects.push(languagesThirdProject)
+languages.onScrollEffects.push(languagesBackToDefault)
 sections.push(languages)
 
 
@@ -93,7 +83,7 @@ sections.push(welcome)
 const about = new Section(document.querySelector('.about__content'))
 const aboutTitleFadeIn = new Effect(1700, 2500)
 const aboutContentFadeIn = new Effect(1700, 2800)
-const aboutTitleFadeOut = new Effect(3200, 4000, true)
+const aboutTitleFadeOut = new Effect(3200, 4400, true)
 const aboutContentFadeOut = new Effect(3200, 4300)
 
 aboutTitleFadeIn.func = sectionTitleFadeIn
@@ -132,13 +122,38 @@ sections.push(skills)
 //PROJECTS ELEMENT
 const projects = new Section(document.querySelector('.projects__content'))
 const projectsTitleFadeIn = new Effect(8000, 8800)
-const projectsContentFadeIn = new Effect(8000, 9000)
+
+const firstProjectsContentFadeIn = new Effect(8000, 9000)
+const firstProjectsContentFadeOut = new Effect(9200, 10100)
+
+const secondProjectsContentFadeIn = new Effect(9500, 10500)
+const secondProjectsContentFadeOut = new Effect(11000, 11900)
+
+const thirdProjectsContentFadeIn = new Effect(11300, 12300)
+const thirdProjectsContentFadeOut = new Effect(12800, 13500)
+
+const projectsTitleFadeOut = new Effect(12800, 13600, true)
 
 projectsTitleFadeIn.func = sectionTitleFadeIn
-projectsContentFadeIn.func = sectionContentFadeIn
+firstProjectsContentFadeIn.func = specificSectionContentFadeIn(0, -1)
+firstProjectsContentFadeOut.func = specificSectionContentFadeOut(0)
+
+secondProjectsContentFadeIn.func = specificSectionContentFadeIn(1, 1)
+secondProjectsContentFadeOut.func = specificSectionContentFadeOut(1)
+
+thirdProjectsContentFadeIn.func = specificSectionContentFadeIn(2, -1)
+thirdProjectsContentFadeOut.func = specificSectionContentFadeOut(2)
+
+projectsTitleFadeOut.func = sectionTitleFadeIn
 
 projects.onScrollEffects.push(projectsTitleFadeIn)
-projects.onScrollEffects.push(projectsContentFadeIn)
+projects.onScrollEffects.push(firstProjectsContentFadeIn)
+projects.onScrollEffects.push(firstProjectsContentFadeOut)
+projects.onScrollEffects.push(secondProjectsContentFadeIn)
+projects.onScrollEffects.push(secondProjectsContentFadeOut)
+projects.onScrollEffects.push(thirdProjectsContentFadeIn)
+projects.onScrollEffects.push(thirdProjectsContentFadeOut)
+projects.onScrollEffects.push(projectsTitleFadeOut)
 sections.push(projects)
 
 
