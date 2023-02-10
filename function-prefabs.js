@@ -1,3 +1,30 @@
+function changeDisplayMode(element, effect, appear)
+{
+    var temp = effect.calculateValueBetween(0, 1)
+
+    if(temp == appear)
+    {
+        element.style.display = "none"
+    }
+    else
+    {
+        element.style.display = "flex"
+    }
+}
+
+function sectionDisplay(element)
+{
+    var temp = this.calculateValueBetween(0, 1)
+    if(temp == 0 || temp == 1)
+    {
+        element.parentElement.style.display = "none"
+    }
+    else
+    {
+        element.parentElement.style.display = "flex"
+    }
+}
+
 function sectionTitleFadeIn (element)
 {
     const e = element.children[0]
@@ -29,6 +56,7 @@ function specificSectionContentFadeIn(number, site)
         e.style.opacity = this.calculateValueBetween(0, 1)
         e.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
         e.style.transform = 'translate(' + this.calculateValueBetween(500*site, 0) + 'px, 0)'
+        changeDisplayMode(e, this, 0)
     }
 }
 
@@ -40,6 +68,7 @@ function specificSectionContentFadeOut(number)
         e.style.opacity = this.calculateValueBetween(1, 0)
         e.style.filter = 'blur(' + this.calculateValueBetween(0, 3) + 'px)'
         e.style.scale = (this.calculateValueBetween(1, 0.8))
+        changeDisplayMode(e, this, 1)
     }
 }
 

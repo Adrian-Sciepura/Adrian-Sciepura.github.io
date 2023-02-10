@@ -65,15 +65,18 @@ sections.push(languages)
 
 
 //WELCOME ELEMENT
-const welcome = new Section(document.querySelector('.welcome'))
+const welcome = new Section(document.querySelector('.welcome__content'))
+const welcomeDisplay = new Effect(-100, 1500)
 const welcomeFadeOut = new Effect(600, 1500) 
 
+welcomeDisplay.func = sectionDisplay
 welcomeFadeOut.func = function(element)
 {
     element.style.opacity = (this.calculateValueBetween(1, 0))
     element.style.scale = (this.calculateValueBetween(1, 0.8))
 }
 
+welcome.onScrollEffects.push(welcomeDisplay)
 welcome.onScrollEffects.push(welcomeFadeOut)
 sections.push(welcome)
 
@@ -81,16 +84,19 @@ sections.push(welcome)
 
 //ABOUT ELEMENT
 const about = new Section(document.querySelector('.about__content'))
+const aboutDisplay = new Effect(1700, 4300)
 const aboutTitleFadeIn = new Effect(1700, 2500)
 const aboutContentFadeIn = new Effect(1700, 2800)
 const aboutTitleFadeOut = new Effect(3200, 4400, true)
 const aboutContentFadeOut = new Effect(3200, 4300)
 
+aboutDisplay.func = sectionDisplay
 aboutTitleFadeIn.func = sectionTitleFadeIn
 aboutContentFadeIn.func = sectionContentFadeIn
 aboutTitleFadeOut.func = sectionTitleFadeIn
 aboutContentFadeOut.func = sectionContentFadeOut
 
+about.onScrollEffects.push(aboutDisplay)
 about.onScrollEffects.push(aboutTitleFadeIn)
 about.onScrollEffects.push(aboutContentFadeIn)
 about.onScrollEffects.push(aboutTitleFadeOut)
@@ -101,16 +107,19 @@ sections.push(about)
 
 //SKILLS ELEMENT
 const skills = new Section(document.querySelector('.skills__content'))
+const skillsDisplay = new Effect(4500, 7300)
 const skillsTitleFadeIn = new Effect(4500, 5300)
 const skillsContentFadeIn = new Effect(4500, 5500)
 const skillsTitleFadeOut = new Effect(6500, 7400, true)
 const skillsContentFadeOut = new Effect(6500, 7300)
 
+skillsDisplay.func = sectionDisplay
 skillsTitleFadeIn.func = sectionTitleFadeIn
 skillsContentFadeIn.func = sectionContentFadeIn
 skillsTitleFadeOut.func = sectionTitleFadeIn
 skillsContentFadeOut.func = sectionContentFadeOut
 
+skills.onScrollEffects.push(skillsDisplay)
 skills.onScrollEffects.push(skillsTitleFadeIn)
 skills.onScrollEffects.push(skillsContentFadeIn)
 skills.onScrollEffects.push(skillsTitleFadeOut)
@@ -121,6 +130,7 @@ sections.push(skills)
 
 //PROJECTS ELEMENT
 const projects = new Section(document.querySelector('.projects__content'))
+const projectsDisplay = new Effect(8000, 13600)
 const projectsTitleFadeIn = new Effect(8000, 8800)
 
 const firstProjectsContentFadeIn = new Effect(8000, 9000)
@@ -134,6 +144,7 @@ const thirdProjectsContentFadeOut = new Effect(12800, 13500)
 
 const projectsTitleFadeOut = new Effect(12800, 13600, true)
 
+projectsDisplay.func = sectionDisplay
 projectsTitleFadeIn.func = sectionTitleFadeIn
 firstProjectsContentFadeIn.func = specificSectionContentFadeIn(0, -1)
 firstProjectsContentFadeOut.func = specificSectionContentFadeOut(0)
@@ -146,6 +157,7 @@ thirdProjectsContentFadeOut.func = specificSectionContentFadeOut(2)
 
 projectsTitleFadeOut.func = sectionTitleFadeIn
 
+projects.onScrollEffects.push(projectsDisplay)
 projects.onScrollEffects.push(projectsTitleFadeIn)
 projects.onScrollEffects.push(firstProjectsContentFadeIn)
 projects.onScrollEffects.push(firstProjectsContentFadeOut)
@@ -157,6 +169,26 @@ projects.onScrollEffects.push(projectsTitleFadeOut)
 sections.push(projects)
 
 
+
+//CONTACT SECTION
+const contact = new Section(document.querySelector('.contact__content'))
+const contactDisplay = new Effect(13600, 17000)
+const contactTitleFadeIn = new Effect(13600, 14400)
+const contactContentFadeIn = new Effect(13600, 14600)
+
+contactDisplay.func = sectionDisplay
+contactTitleFadeIn.func = sectionTitleFadeIn
+contactContentFadeIn.func = sectionContentFadeIn
+
+contact.onScrollEffects.push(contactDisplay)
+contact.onScrollEffects.push(contactTitleFadeIn)
+contact.onScrollEffects.push(contactContentFadeIn)
+sections.push(contact)
+
+
+window.addEventListener('load', () => {
+    sections.forEach((sec) => sec.updateScrollEffects(window.pageYOffset, true))
+});
 
 window.addEventListener('scroll', () => {
     sections.forEach((sec) => sec.updateScrollEffects(window.pageYOffset, false))

@@ -11,7 +11,8 @@ body
     color: white;
     height: 5000px;
     overflow-x: hidden;
-    height: 15000px;
+    overflow-y: scroll;
+    height: 17000px;
 }
 
 .hidden
@@ -73,6 +74,7 @@ section
 {
     display: flex;
     justify-content: start;
+    flex-direction: column;
     margin-top: 10px;
     margin-left: 30px;
     opacity: 0;
@@ -120,6 +122,11 @@ section
 
 .welcome
 {
+    display: none;
+}
+
+.welcome__content
+{
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -156,6 +163,7 @@ section
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .about__content
@@ -177,6 +185,7 @@ section
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .skills__content
@@ -213,6 +222,7 @@ section
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .projects__content
@@ -285,8 +295,66 @@ section
     opacity: 1;
 }
 
+.contact
+{
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
 
+.contact__content
+{
+    width: 900px;
+}
 
+.contact__icon
+{
+    fill: white;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.contact__icon--big
+{
+    width: 45px;
+    height: 45px;
+}
+
+.contact__icon:hover
+{
+    fill: #06D6A0;
+}
+
+.contact__element
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    width: fit-content;
+}
+
+.contact__element:hover
+{
+    cursor: pointer;
+}
+
+.contact__text
+{
+    vertical-align: middle;
+}
+
+.contact__media-header
+{
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
 @media (max-width: 1000px)
 {
@@ -322,7 +390,7 @@ section
 
     .section__content
     {
-        justify-content: center;
+        align-items: center;
         width: 90%;
     }
 
