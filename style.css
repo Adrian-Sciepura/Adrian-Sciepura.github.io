@@ -42,16 +42,7 @@ section
     width: 100vw;
     height: 100vh;
     grid-template-columns: 1fr 30px 900px 1fr;
-}
-
-.section--centered
-{
-    grid-template-rows: 2fr 60px auto 50px 2fr;
-}
-
-.section--static
-{
-    grid-template-rows: 1fr 60px 3fr 50px 1fr;
+    grid-template-rows: 2fr auto auto 50px 2fr;
 }
 
 .section__triangle
@@ -61,6 +52,8 @@ section
     grid-row: 2;
     color: #06D6A0;
     font-size: 23px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .section__title
@@ -70,6 +63,8 @@ section
     display: grid;
     grid-template-columns: max-content auto;
     align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .section__title-name
@@ -117,8 +112,8 @@ section
 .main-arrow span
 {
     display: block;
-    width: 1.7vw;
-    height: 1.7vw;
+    width: 35px;
+    height: 35px;
     border-bottom: 2px solid white;
     border-right: 2px solid white;
     margin: -12px;
@@ -136,8 +131,8 @@ section
 .arrow
 {
     display: block;
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 25px;
+    height: 25px;
     border-bottom: 3px solid white;
     border-right: 3px solid white;
     animation: down-arrow-animation 3s infinite;
@@ -403,6 +398,15 @@ section
     }
 }
 
+
+@media (max-width: 1400px)
+{
+    .language
+    {
+        font-size: 50px;
+    }
+}
+
 @media (max-width: 1000px)
 {
     .text--big
@@ -412,33 +416,39 @@ section
 
     .language
     {
-        font-size: 50px;
+        font-size: 45px;
+    }
+
+    .section
+    {
+        grid-template-columns:  30px 0px auto 30px;
+    }
+
+    .section__title
+    {
+       justify-content: center;
+    }
+
+    .section__triangle
+    {
+        grid-column: 3;
+        display: none;
     }
 
     .section__title-line
     {
         display: none;
     }
-    
-    .section__title
-    {
-        justify-content: center;
-    }
-
-    .section__title-name
-    {
-        font-size: 30px;
-    }
-
-    .section__title-triangle
-    {
-        font-size: 22px;
-    }
 
     .section__content
     {
-        align-items: center;
-        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section__arrow
+    {
+        align-self: center;
     }
 
     .about__text
@@ -458,7 +468,7 @@ section
 
     .project__description
     {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .project__image
@@ -470,6 +480,18 @@ section
 
 @media (max-width: 600px)
 {
+    .main-arrow span
+    {
+        width: 25px;
+        height: 25px;
+    }
+
+    .arrow
+    {
+        width: 20px;
+        height: 20px;
+    }
+
     .text--big
     {
         font-size: 20px;
@@ -485,15 +507,9 @@ section
         font-size: 15px;
     }
 
-    .section__content
-    {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     .section__title-name
     {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .section__title-triangle
@@ -518,7 +534,7 @@ section
 
     .skills__framework-list
     {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .project__title
@@ -528,7 +544,7 @@ section
 
     .project__description
     {
-        font-size: 13px;
+        font-size: 12px;
         width: 80%;
     }
 
@@ -542,6 +558,22 @@ section
         max-height: 25vh;
     }
 
+    .contact__element
+    {
+        font-size: 16px;
+    }
+
+    .contact__icon
+    {
+        width: 25px;
+        height: 25px;
+    }
+
+    .contact__icon--big
+    {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media (max-height: 750px)
