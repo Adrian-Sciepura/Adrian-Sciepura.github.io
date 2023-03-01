@@ -1,12 +1,45 @@
+let currentlyScrolling = null
+
+//SCROLL POSITIONS
+const breakLength = 200
+
+const welcomeStart = -100
+const welcomeEnd = welcomeStart + 1600
+const aboutStart = welcomeEnd + breakLength
+const aboutEnd = aboutStart + 2600
+const skillsStart = aboutEnd + breakLength
+const skillsEnd = skillsStart + 3000
+const projectsStart = skillsEnd + breakLength
+const projectsEnd = projectsStart + 8000
+const contactStart = projectsEnd + breakLength
+const contactEnd = contactStart + 2600
+
+const positions = 
+[
+    calculatePartOfTheWay(aboutStart, aboutEnd, 5, 2),
+    calculatePartOfTheWay(skillsStart, skillsEnd, 5, 2),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 1),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 4),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 7),
+    calculatePartOfTheWay(contactStart, contactEnd, 5, 2)
+]
+
+
+function calculatePartOfTheWay(val1, val2, partSize, part)
+{
+    return val1 + ((val2 - val1) / partSize) * part
+}
+
+
 //LANGUAGES ELEMENT
 const languages = new Section(document.querySelector('.languages'))
-const languagesFadeIn = new Effect(0, 1000)
-const languagesExpand = new Effect(4800, 5700)
-const languagesCollapse = new Effect(6600, 7700, true)
-const languagesFirstProject = new Effect(8000, 8800)
-const languagesSecondProject = new Effect(9500, 10300)
-const languagesThirdProject = new Effect(11300, 12100)
-const languagesBackToDefault = new Effect(12800, 13600)
+const languagesFadeIn = new Effect(0, calculatePartOfTheWay(welcomeStart, welcomeEnd, 5, 4))
+const languagesExpand = new Effect(calculatePartOfTheWay(skillsStart, skillsEnd, 5, 1), calculatePartOfTheWay(skillsStart, skillsEnd, 5, 2))
+const languagesCollapse = new Effect(calculatePartOfTheWay(skillsStart, skillsEnd, 5, 3), skillsEnd, true)
+const languagesFirstProject = new Effect(projectsStart, calculatePartOfTheWay(projectsStart, projectsEnd, 10, 0.8))
+const languagesSecondProject = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 3), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 3.8))
+const languagesThirdProject = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 6), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 6.8))
+const languagesBackToDefault = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 8.5), projectsEnd)
 
 languagesFadeIn.func = function(element)
 {
@@ -65,11 +98,11 @@ sections.push(languages)
 
 
 //WELCOME ELEMENT
-const welcome = new Section(document.querySelector('.welcome__content'))
-const welcomeDisplay = new Effect(-100, 1500)
-const welcomeFadeOut = new Effect(600, 1500) 
+const welcome = new Section(document.querySelector('.welcome'))
+const welcomeDisplay = new Effect(welcomeStart, welcomeEnd)
+const welcomeFadeOut = new Effect(welcomeEnd / 2, welcomeEnd) 
 
-welcomeDisplay.func = sectionDisplay
+welcomeDisplay.func = sectionDisplay("flex")
 welcomeFadeOut.func = function(element)
 {
     element.style.opacity = (this.calculateValueBetween(1, 0))
@@ -83,14 +116,14 @@ sections.push(welcome)
 
 
 //ABOUT ELEMENT
-const about = new Section(document.querySelector('.about__content'))
-const aboutDisplay = new Effect(1700, 4300)
-const aboutTitleFadeIn = new Effect(1700, 2500)
-const aboutContentFadeIn = new Effect(1700, 2800)
-const aboutTitleFadeOut = new Effect(3200, 4400, true)
-const aboutContentFadeOut = new Effect(3200, 4300)
+const about = new Section(document.querySelector('#about__section'))
+const aboutDisplay = new Effect(aboutStart, aboutEnd)
+const aboutTitleFadeIn = new Effect(aboutStart, calculatePartOfTheWay(aboutStart, aboutEnd, 5, 2))
+const aboutContentFadeIn = new Effect(aboutStart, calculatePartOfTheWay(aboutStart, aboutEnd, 5, 2))
+const aboutTitleFadeOut = new Effect(calculatePartOfTheWay(aboutStart, aboutEnd, 5, 3), aboutEnd, true)
+const aboutContentFadeOut = new Effect(calculatePartOfTheWay(aboutStart, aboutEnd, 5, 3), aboutEnd)
 
-aboutDisplay.func = sectionDisplay
+aboutDisplay.func = sectionDisplay("grid")
 aboutTitleFadeIn.func = sectionTitleFadeIn
 aboutContentFadeIn.func = sectionContentFadeIn
 aboutTitleFadeOut.func = sectionTitleFadeIn
@@ -106,14 +139,14 @@ sections.push(about)
 
 
 //SKILLS ELEMENT
-const skills = new Section(document.querySelector('.skills__content'))
-const skillsDisplay = new Effect(4500, 7300)
-const skillsTitleFadeIn = new Effect(4500, 5300)
-const skillsContentFadeIn = new Effect(4500, 5500)
-const skillsTitleFadeOut = new Effect(6500, 7400, true)
-const skillsContentFadeOut = new Effect(6500, 7300)
+const skills = new Section(document.querySelector('#skills__section'))
+const skillsDisplay = new Effect(skillsStart, skillsEnd)
+const skillsTitleFadeIn = new Effect(skillsStart, calculatePartOfTheWay(skillsStart, skillsEnd, 5, 2))
+const skillsContentFadeIn = new Effect(skillsStart, calculatePartOfTheWay(skillsStart, skillsEnd, 5, 2))
+const skillsTitleFadeOut = new Effect(calculatePartOfTheWay(skillsStart, skillsEnd, 5, 3), skillsEnd, true)
+const skillsContentFadeOut = new Effect(calculatePartOfTheWay(skillsStart, skillsEnd, 5, 3), skillsEnd)
 
-skillsDisplay.func = sectionDisplay
+skillsDisplay.func = sectionDisplay("grid")
 skillsTitleFadeIn.func = sectionTitleFadeIn
 skillsContentFadeIn.func = sectionContentFadeIn
 skillsTitleFadeOut.func = sectionTitleFadeIn
@@ -129,32 +162,25 @@ sections.push(skills)
 
 
 //PROJECTS ELEMENT
-const projects = new Section(document.querySelector('.projects__content'))
-const projectsDisplay = new Effect(8000, 13600)
-const projectsTitleFadeIn = new Effect(8000, 8800)
+const projects = new Section(document.querySelector('#projects__section'))
+const projectsDisplay = new Effect(projectsStart, projectsEnd)
+const projectsTitleFadeIn = new Effect(projectsStart, calculatePartOfTheWay(projectsStart, projectsEnd, 10, 1))
+const firstProjectsContentFadeIn = new Effect(projectsStart, calculatePartOfTheWay(projectsStart, projectsEnd, 10, 1))
+const firstProjectsContentFadeOut = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 2.5), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 3.5))
+const secondProjectsContentFadeIn = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 2.8), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 4))
+const secondProjectsContentFadeOut = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 5.5), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 6.5))
+const thirdProjectsContentFadeIn = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 5.8), calculatePartOfTheWay(projectsStart, projectsEnd, 10, 7))
+const thirdProjectsContentFadeOut = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 8.5), projectsEnd)
+const projectsTitleFadeOut = new Effect(calculatePartOfTheWay(projectsStart, projectsEnd, 10, 9), projectsEnd, true)
 
-const firstProjectsContentFadeIn = new Effect(8000, 9000)
-const firstProjectsContentFadeOut = new Effect(9200, 10100)
-
-const secondProjectsContentFadeIn = new Effect(9500, 10500)
-const secondProjectsContentFadeOut = new Effect(11000, 11900)
-
-const thirdProjectsContentFadeIn = new Effect(11300, 12300)
-const thirdProjectsContentFadeOut = new Effect(12800, 13500)
-
-const projectsTitleFadeOut = new Effect(12800, 13600, true)
-
-projectsDisplay.func = sectionDisplay
+projectsDisplay.func = sectionDisplay("grid")
 projectsTitleFadeIn.func = sectionTitleFadeIn
-firstProjectsContentFadeIn.func = specificSectionContentFadeIn(0, -1)
-firstProjectsContentFadeOut.func = specificSectionContentFadeOut(0)
-
-secondProjectsContentFadeIn.func = specificSectionContentFadeIn(1, 1)
-secondProjectsContentFadeOut.func = specificSectionContentFadeOut(1)
-
-thirdProjectsContentFadeIn.func = specificSectionContentFadeIn(2, -1)
-thirdProjectsContentFadeOut.func = specificSectionContentFadeOut(2)
-
+firstProjectsContentFadeIn.func = projectFadeIn(0, -1)
+firstProjectsContentFadeOut.func = projectFadeOut(0)
+secondProjectsContentFadeIn.func = projectFadeIn(1, 1)
+secondProjectsContentFadeOut.func = projectFadeOut(1)
+thirdProjectsContentFadeIn.func = projectFadeIn(2, -1)
+thirdProjectsContentFadeOut.func = projectFadeOut(2)
 projectsTitleFadeOut.func = sectionTitleFadeIn
 
 projects.onScrollEffects.push(projectsDisplay)
@@ -171,12 +197,12 @@ sections.push(projects)
 
 
 //CONTACT SECTION
-const contact = new Section(document.querySelector('.contact__content'))
-const contactDisplay = new Effect(13600, 17000)
-const contactTitleFadeIn = new Effect(13600, 14400)
-const contactContentFadeIn = new Effect(13600, 14600)
+const contact = new Section(document.querySelector('#contact__section'))
+const contactDisplay = new Effect(contactStart, contactEnd)
+const contactTitleFadeIn = new Effect(contactStart, calculatePartOfTheWay(contactStart, contactEnd, 5, 2))
+const contactContentFadeIn = new Effect(contactStart, calculatePartOfTheWay(contactStart, contactEnd, 5, 2))
 
-contactDisplay.func = sectionDisplay
+contactDisplay.func = sectionDisplay("grid")
 contactTitleFadeIn.func = sectionTitleFadeIn
 contactContentFadeIn.func = sectionContentFadeIn
 
@@ -184,6 +210,40 @@ contact.onScrollEffects.push(contactDisplay)
 contact.onScrollEffects.push(contactTitleFadeIn)
 contact.onScrollEffects.push(contactContentFadeIn)
 sections.push(contact)
+
+
+
+//SCROLL BUTTONS
+
+function scrollDown(element, position, speed)
+{
+    const step = (position - document.documentElement.scrollTop) / 200
+    currentlyScrolling = element
+    for(let i = 0; i < 200; i++)
+    {
+        setTimeout(() => { document.documentElement.scrollTop += step }, i*10*speed)
+    }
+    setTimeout(() => { currentlyScrolling = null }, 200*10*speed)
+}
+
+
+
+const mainArrow = document.querySelector(".main-arrow")
+mainArrow.addEventListener("click", () =>
+{
+    if(currentlyScrolling == null)
+        scrollDown(mainArrow, positions[0], 0.8)
+})
+
+const arrows = document.querySelectorAll(".arrow")
+arrows.forEach((arrow) => {
+    arrow.addEventListener("click", () =>
+    {
+        if(currentlyScrolling == null)
+            scrollDown(arrow, positions[(arrow.id).substring(1)], 0.5)
+    })
+})
+
 
 
 window.addEventListener('load', () => {

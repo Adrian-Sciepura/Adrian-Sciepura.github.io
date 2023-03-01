@@ -1,74 +1,88 @@
-function changeDisplayMode(element, effect, appear)
+function sectionDisplay(targetDisplay)
 {
-    var temp = effect.calculateValueBetween(0, 1)
-
-    if(temp == appear)
+    return function(element)
     {
-        element.style.display = "none"
-    }
-    else
-    {
-        element.style.display = "flex"
-    }
-}
-
-function sectionDisplay(element)
-{
-    var temp = this.calculateValueBetween(0, 1)
-    if(temp == 0 || temp == 1)
-    {
-        element.parentElement.style.display = "none"
-    }
-    else
-    {
-        element.parentElement.style.display = "flex"
+        var temp = this.calculateValueBetween(0, 1)
+        if(temp == 0 || temp == 1)
+        {
+            element.style.display = "none"
+        }
+        else
+        {
+            element.style.display = targetDisplay
+        }
     }
 }
 
-function sectionTitleFadeIn (element)
+function sectionTitleFadeIn(element)
 {
-    const e = element.children[0]
-    e.style.opacity = this.calculateValueBetween(0, 1)
+    const triangle = element.children[0]
+    const title = element.children[1]
+    const temp = this.calculateValueBetween(0, 1)
+    triangle.style.opacity = temp
+    title.style.opacity = temp
 }
 
-function sectionContentFadeIn (element)
+function sectionContentFadeIn(element)
 {
-    const e = element.children[1]
+    const e = element.children[2]
     e.style.opacity = this.calculateValueBetween(0, 1)
     e.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
     e.style.transform = 'translate(' + this.calculateValueBetween(-500, 0) + 'px, 0)'
 }
 
-function sectionContentFadeOut (element)
+function sectionContentFadeOut(element)
 {
-    const e = element.children[1]
+    const e = element.children[2]
     e.style.opacity = this.calculateValueBetween(1, 0)
     e.style.filter = 'blur(' + this.calculateValueBetween(0, 3) + 'px)'
     e.style.scale = (this.calculateValueBetween(1, 0.8))
 }
 
-//site parameter: -1 - left, 1 - right
-function specificSectionContentFadeIn(number, site)
+function changeProjectVisibility(content, arrow, effect, appear)
 {
-    return function(element)
+    var temp = effect.calculateValueBetween(0, 1)
+
+    if(temp == appear)
     {
-        const e = element.children[1 + number]
-        e.style.opacity = this.calculateValueBetween(0, 1)
-        e.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
-        e.style.transform = 'translate(' + this.calculateValueBetween(500*site, 0) + 'px, 0)'
-        changeDisplayMode(e, this, 0)
+        arrow.style.display = "none"
+        content.style.display = "none"
+    }
+    else
+    {
+        arrow.style.display = "block"
+        content.style.display = "flex"
     }
 }
 
-function specificSectionContentFadeOut(number)
+
+//site parameter: -1 - left, 1 - right
+function projectFadeIn(number, site)
 {
     return function(element)
     {
-        const e = element.children[1 + number]
-        e.style.opacity = this.calculateValueBetween(1, 0)
-        e.style.filter = 'blur(' + this.calculateValueBetween(0, 3) + 'px)'
-        e.style.scale = (this.calculateValueBetween(1, 0.8))
-        changeDisplayMode(e, this, 1)
+        const content = (element.children[2+number]).children[0]
+        const arrow = element.children[5+number]
+        const temp = this.calculateValueBetween(0, 1)
+        content.style.opacity = temp
+        content.style.filter = 'blur(' + this.calculateValueBetween(3, 0) + 'px)'
+        content.style.transform = 'translate(' + this.calculateValueBetween(500*site, 0) + 'px, 0)'
+        changeProjectVisibility(content, arrow, this, 0)
+        
+    }
+}
+
+function projectFadeOut(number)
+{
+    return function(element)
+    {
+        const content = (element.children[2+number]).children[0]
+        const arrow = element.children[5+number]
+        const temp = this.calculateValueBetween(1, 0)
+        content.style.opacity = temp
+        content.style.filter = 'blur(' + this.calculateValueBetween(0, 3) + 'px)'
+        content.style.scale = (this.calculateValueBetween(1, 0.8))
+        changeProjectVisibility(content, arrow, this, 1)
     }
 }
 
