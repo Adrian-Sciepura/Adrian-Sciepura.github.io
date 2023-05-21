@@ -342,6 +342,7 @@ section
 .contact__icon:hover
 {
     fill: #06D6A0;
+    cursor: pointer;
 }
 
 .contact__element
@@ -350,11 +351,6 @@ section
     margin-bottom: 10px;
     font-size: 22px;
     width: fit-content;
-}
-
-.contact__element:hover
-{
-    cursor: pointer;
 }
 
 .contact__text
