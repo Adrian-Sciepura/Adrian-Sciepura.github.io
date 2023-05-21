@@ -16,12 +16,12 @@ const contactEnd = contactStart + 2600
 
 const positions = 
 [
-    calculatePartOfTheWay(aboutStart, aboutEnd, 5, 2),
-    calculatePartOfTheWay(skillsStart, skillsEnd, 5, 2),
-    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 1),
-    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 4),
-    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 7),
-    calculatePartOfTheWay(contactStart, contactEnd, 5, 2)
+    calculatePartOfTheWay(aboutStart, aboutEnd, 2, 1),
+    calculatePartOfTheWay(skillsStart, skillsEnd, 2, 1),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 2),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 5),
+    calculatePartOfTheWay(projectsStart, projectsEnd, 10, 8),
+    calculatePartOfTheWay(contactStart, contactEnd, 2, 1)
 ]
 
 
