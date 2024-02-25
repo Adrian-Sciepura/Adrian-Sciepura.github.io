@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+    /* TEXT COLOR */
+    --default-color: white;
+    --higlight-color: #06D6A0;
+
+    /* TEXT SIZE */
+    --small-text-size: 2em;
+    --medium-text-size: 3em;
+    --semi-large-text-size: 1.7em;
+    --large-text-size: 2.2em;
+    --very-large-text-size: 3.2em;
+
+    /* TEXT WIDTH */
+    --thin-text: 100;
+    --extra-light-text: 200;
+    --regular-text: 300;
+    --medium-text: 500;
+    --bold-text: 700;
+
+}
+
+body {
+    background-color: #141414;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    padding: 0;
+    color: var(--default-color);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+nav {    
+    color: var(--higlight-color);
+    font-size: var(--semi-large-text-size);
+    font-weight: var(--extra-light-text);
+    display: flex;
+    row-gap: 1em;
+    flex-direction: column;
+    align-items: end;
+    padding: 1.2em;
+    border-right: 2px solid white;
+    margin-right: 2em;
+    margin-left: 5vw;
+}
+
+section {
+    
+}
+
+.section__welcome {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;;
+    align-items: start;
+}
+
+.welcome__top-text {
+    font-size: var(--semi-large-text-size);
+    font-weight: var(--regular-text);
+}
+
+.welcome__middle-text {
+    font-size: var(--very-large-text-size);
+    font-weight: var(--bold-text);
+    text-shadow: 0px 4px 100px var(--default-color);
+}
+
+.welcome__bottom-text {
+    font-size: var(--large-text-size);
+    font-weight: var(--medium-text);
+}
