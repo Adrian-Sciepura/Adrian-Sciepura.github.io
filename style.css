@@ -6,8 +6,8 @@
     --higlight-color: #06D6A0;
 
     /* TEXT SIZE */
-    --small-text-size: 2em;
-    --medium-text-size: 3em;
+    --small-text-size: 1em;
+    --medium-text-size: 1.4em;
     --semi-large-text-size: 1.7em;
     --large-text-size: 2.2em;
     --very-large-text-size: 3.2em;
@@ -19,10 +19,13 @@
     --medium-text: 500;
     --bold-text: 700;
 
+
+    /* COLORS */
+    --main-background-color: #141414;
 }
 
 body {
-    background-color: #141414;
+    background-color: var(--main-background-color);
     font-family: 'JetBrains Mono', monospace;
     margin: 0;
     padding: 0;
@@ -31,6 +34,11 @@ body {
     width: 100vw;
     display: flex;
     align-items: center;
+}
+
+.text--higlight {
+    color: var(--higlight-color);
+    font-weight: var(--bold-text);
 }
 
 nav {    
@@ -45,10 +53,17 @@ nav {
     border-right: 2px solid white;
     margin-right: 2em;
     margin-left: 5vw;
-    animation: down-appear 8s ease-in-out;
+    animation: down-appear 2s forwards 2s;
+    opacity: 0;
 }
 
-nav > span:hover {
+.nav_element {
+    opacity: 0;
+    animation: appear 2s forwards;
+    animation-delay: calc(var(--i) * 0.15s + 3.75s);
+}
+
+.nav_element:hover {
     font-weight: var(--bold-text);
     cursor: pointer;
 }
@@ -56,6 +71,10 @@ nav > span:hover {
 section {
     display: none;
 }
+
+
+/* WELCOME SECTION */
+
 
 .section__welcome {
     display: none;
@@ -83,10 +102,43 @@ section {
     animation: left-appear 1.5s ease-in-out;
 }
 
+
+
+/* ABOUT SECTION */
+
+
+.section__about {
+    position: relative;
+    max-width: 60%;
+    max-height: 50%;
+    min-width: 45%;
+    min-height: 40%;
+    background: var(--main-background-color);
+    padding: 4vw;
+    align-items: center;
+}
+
+.section__about::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background: linear-gradient(135deg, #828C8A 0%, transparent 10%, transparent 90%, #828C8A 100%);
+    z-index: -1;
+}
+
+.about__description {
+    text-align: justify;
+    font-size: var(--medium-text-size);
+}
+
+
+/* Animations */
+
+
 @keyframes left-appear {
     from {
         opacity: 0;
-        transform: translateX(-30%);
+        transform: translateX(-30%) scale(0.8);
     }
     to {
         opacity: 1;
