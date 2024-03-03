@@ -29,13 +29,14 @@ class DisplayManager
         this.sections = 
         [
             document.querySelector('.section__welcome'),
-            document.querySelector('.section__about')
+            document.querySelector('.section__about'),
+            document.querySelector('.section__experience'),
         ];
 
         for(let i = 0; i < this.navElements.length; i++)
             this.navElements[i].addEventListener('click', () => this.changeSection(i));
 
-        this.displaySection(0);
+        this.displaySection(2);
     }
 
     changeSection(id)

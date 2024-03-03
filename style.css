@@ -6,7 +6,8 @@
     --higlight-color: #06D6A0;
 
     /* TEXT SIZE */
-    --small-text-size: 1em;
+    --small-text-size: 0.9em;
+    --semi-medium-text-size: 1.1em;
     --medium-text-size: 1.4em;
     --semi-large-text-size: 1.7em;
     --large-text-size: 2.2em;
@@ -129,6 +130,141 @@ section {
 .about__description {
     text-align: justify;
     font-size: var(--medium-text-size);
+}
+
+
+/* EXPERIENCE SECTION */
+
+
+.section__experience {
+    position: relative;
+    width: 70%;
+    height: 70%;
+}
+
+.section__experience::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: white;
+    top: 50%;
+    left: 0;
+    margin-left: -3px;
+    z-index: -1;
+}
+
+.experience__container {
+    box-sizing: border-box;
+    position: relative;
+    padding: 3vh;
+    margin: 0 1em 0 1em;
+    width: 40%;
+    height: 50%;
+}
+
+.experience__container--top {
+    padding-bottom: 7vh;
+    top: 0;
+}
+
+.experience__container--bottom {
+    padding-top: 7vh;
+    top: 50%;
+}
+
+.container__work-period {
+    position: absolute;
+    z-index: 10;
+    opacity: 0.8;
+    font-weight: var(--thin-text);
+}
+
+.container__logo {
+    position: absolute;
+    width: 5vh;
+    border-radius: 50%;
+    z-index: 10;
+    left: 4vw;
+}
+
+.experience__container--top .container__logo {
+    bottom: -2.5vh;
+}
+
+.experience__container--top .container__work-period {
+    bottom: -6vh;
+}
+
+.experience__container--top .content__arrow {
+    border-top: 3.5vh solid #303030;
+    bottom: -5.5vh;
+    left: 2.5vw;
+}
+
+.experience__container--bottom .container__logo {
+    top: -2.5vh
+}
+
+.experience__container--bottom .container__work-period {
+    top: -6vh;
+}
+
+.experience__container--bottom .content__arrow {
+    border-bottom: 3.5vh solid #303030;
+    top: -5.5vh;
+    left: 2.5vw;
+}
+
+.container__content {
+    box-sizing: border-box;
+    padding: 0.5em;
+    background-color: #303030;
+    position: relative;
+    border-radius: 15px;
+    height: 100%;
+    box-shadow: 0px 4px 50px #303030;
+}
+
+.container__content:hover {
+    background-color: #2A2A2A;
+    box-shadow: 0px 4px 50px black;
+    transform: scale(1.01);
+    transition: transform 0.5s linear;
+}
+
+.content__position {
+    font-weight: var(--bold-text);
+    font-size: var(--medium-text-size);
+    margin: 0.5em 0 0.5em 1vw;
+}
+
+.content__company {
+    font-size: var(--semi-medium-text-size);
+    font-weight: var(--medium-text);
+    margin: 0 0 0.5em 1vw;
+    color: var(--company-color);
+}
+
+.content__responsibilities {
+    font-size: var(--small-text-size);
+    font-weight: var(--medium-text);
+    margin: 1em 0 0 0.5vw;
+}
+
+.content__responsibilities li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.content__arrow {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 2.5vh solid transparent;
+    border-bottom: 2.5vh solid transparent;
+    border-left: 2.5vh solid transparent;
+    border-right: 2.5vh solid transparent;
 }
 
 
